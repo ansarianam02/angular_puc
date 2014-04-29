@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+    <title>Angular Template</title>
+   
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <script type="text/javascript" src="http://angular-ui.github.io/ng-grid/lib/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript" src="http://angular-ui.github.io/ng-grid/lib/angular.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body ng-app="myApp" ng-controller="MyCtrl">
+    <div class="container">
+      <div class="row">
+
+
+       <h1>Review box</h1>
+
+       <div class="col-md-5">
+        <div class="well well-sm setting_box">
+          <form class="form-horizontal" action="" method="post">
+          <fieldset>
+
+            <legend class="text-center">Set Container Property :</legend>
+              
+
+            <!-- Color input-->
+            <div class="form-group">
+              <label class="col-md-3 control-label" for="email">Container WIdth</label>
+              <div class="col-md-9">
+                <input type="text" placeholder="Full container width" class="form-control" ng-model="fullcontainer_width">
+              </div>
+            </div>
+
+
+             <!-- Box input-->
+            <div class="form-group">
+              <label class="col-md-3 control-label" for="email">Number of Box</label>
+              <div class="col-md-9">
+                <input type="text" placeholder="Full container width" class="form-control" ng-model="noofbox">
+              </div>
+            </div>
+
+
+            <legend class="text-center">Style Title Bar </legend>
+            
+            <!-- Title bar text input-->
+            <div class="form-group">
+              <label class="col-md-3 control-label" for="name">Title</label>
+              <div class="col-md-9">
+                <input type="text" placeholder="Title " class="form-control" ng-model="title_text">
+              </div>
+            </div>
+    
+            <!-- Height input-->
+            <div class="form-group">
+              <label class="col-md-3 control-label" for="name">Title-Bar Height</label>
+              <div class="col-md-9">
+                <input type="text" placeholder="Title-Bar Height" class="form-control" ng-model="title_height">
+              </div>
+            </div>
+    
+            <!-- Color input-->
+            <div class="form-group">
+              <label class="col-md-3 control-label" for="email">Title-Bar Color</label>
+              <div class="col-md-9">
+                <input type="text" placeholder="Title-Bar Color" class="form-control" ng-model="title_bgcolor">
+              </div>
+            </div>
+
+             <legend class="text-center">Style Box :</legend>
+    
+            <!-- Message body -->
+            <div class="form-group">
+              <label class="col-md-3 control-label" for="message">Your comment</label>
+              <div class="col-md-9">
+                <textarea class="form-control" ng-model="dynamic_comment" name="message" placeholder="Please enter your comment here..." rows="5"></textarea>
+              </div>
+            </div>
+            
+            <!-- Height input-->
+            <div class="form-group">
+              <label class="col-md-3 control-label" for="name">Box Height</label>
+              <div class="col-md-9">
+                <input type="text" placeholder="Box Height" class="form-control" ng-model="box_height">
+              </div>
+            </div>
+    
+            <!-- Color input-->
+            <div class="form-group">
+              <label class="col-md-3 control-label" for="email">Box Color</label>
+              <div class="col-md-9">
+                <input type="text" placeholder="Box Color" class="form-control" ng-model="box_bgcolor">
+              </div>
+            </div>
+
+             <!-- share button input-->
+            <div class="form-group">
+              <label class="col-md-3 control-label" for="email">Toggle Buttons </label>
+              <div class="col-md-9">
+              More :<input type="checkbox" ng-model="icon_more" > 
+              Pin :<input type="checkbox" ng-model="icon_pin" > 
+              share :<input type="checkbox" ng-model="icon_share" > 
+              Four :<input type="checkbox" ng-model="icon_four" > 
+              Fifth :<input type="checkbox" ng-model="icon_fifth" > 
+              
+              </div>
+            </div>
+
+
+            <!-- Form actions -->
+            <!-- <div class="form-group">
+              <div class="col-md-12 text-right">
+                <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+              </div>
+            </div> -->
+          </fieldset>
+          </form>
+        </div>
+      </div>
+      
+
+        <div class="col-md-7" ng-style="{width:fullcontainer_width}" ng-repeat="n in [] | range:noofbox">
+         <div class="panel panel-default">
+            <div class="panel-heading"  ng-style="{height:title_height,backgroundColor:title_bgcolor}">
+              <h3 class="panel-title">{{title_text}}</h3>
+                
+            </div>
+            
+            <div class="panel-body"  ng-style="{height:box_height,backgroundColor:box_bgcolor}">
+              <div class="pull-right" > 
+                 <span class="glyphicon glyphicon-chevron-down" ng-show="icon_more"></span> 
+                 <span class="glyphicon glyphicon-pushpin" ng-show="icon_pin"></span> 
+                 <span class="glyphicon glyphicon-plus" ng-show="icon_share"></span> 
+                 <span class="glyphicon glyphicon-trash" ng-show="icon_four"></span> 
+                 <span class="glyphicon glyphicon-cog" ng-show="icon_fifth"></span> 
+
+
+              </div><!-- All Icons Pull right  -->
+              <br/></br/>
+              
+                <div class="row">
+                <div class="col-sm-6 col-md-3">
+                  <a href="#" class="thumbnail">
+                    <img class="img-circle" src="http://images.prd.mris.com/image/V2/1/Yu59d899Ocpyr_RnF0-8qNJX1oYibjwp9TiLy-bZvU9vRJ2iC1zSQgFwW-fTCs6tVkKrj99s7FFm5Ygwl88xIA.jpg" alt="...">
+                  </a>
+                </div>
+                
+              <h4> Comment  ::</h4>
+               {{dynamic_comment}}
+              </div>
+              
+          </div>
+        </div>
+
+
+      </div>
+
+
+
+      </div><!-- row closed -->
+    </div> <!-- Container closed  -->
+
+  
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>
